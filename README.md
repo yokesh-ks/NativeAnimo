@@ -11,6 +11,3 @@ Overall, NativeAnimo is a valuable resource for React Native developers who want
 ## Useful links
 
 [PRD](https://github.com/yokesh-ks/NativeAnimo/wiki/PRD)
-
-
-

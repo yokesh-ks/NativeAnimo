@@ -13,6 +13,8 @@
     "android:apk": "yarn workspace mobile android:apk",
     "android:clean": "yarn workspace mobile android:clean",
     "commit": "git-cz",
+    "prettier": "prettier --write \"**/*.{js,json,md,yml}\"",
+    "format": "prettier --write .",
     "start": "yarn workspace mobile start  --reset-cache",
     "test": "echo \"Error: no test specified\" && exit 1",
     "web": "yarn workspace web start"
