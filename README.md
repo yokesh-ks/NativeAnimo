@@ -8,6 +8,7 @@ With the upcoming addition of the NativeAnimo Playground, users will have the op
 
 Overall, NativeAnimo is a valuable resource for React Native developers who want to create visually stunning and engaging app interfaces with ease.
 
+[PRD](https://github.com/yokesh-ks/NativeAnimo/wiki/PRD)
 
 
 
