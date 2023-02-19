@@ -1,13 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import DashBoard from './screens/dashboard.js'
 
-const App = () => {
+const MobileView = () => {
   return (
     <View>
-      <DashBoard />
+      <Text>MobileView</Text>
     </View>
   )
 }
 
-export default App
+export default MobileView
