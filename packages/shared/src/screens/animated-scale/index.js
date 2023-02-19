@@ -1,22 +1,51 @@
 import { View, Text, useWindowDimensions } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { getScreenTypeLayout } from '../../utils/screenLayout'
 import DesktopView from './DesktopView'
 import MobileView from './MobileView'
 import { useTheme } from '@react-navigation/native'
+import { codeString } from './codeString'
+import { useScaleAnimation } from './useScaleAnimation'
 
 const AnimatedScale = () => {
   const { width: windowWidth } = useWindowDimensions()
-  const { colors } = useTheme()
+  const [scale, animate, isScaled] = useScaleAnimation()
+  const [activePlayground, setActivePlayground] = useState(false)
 
-  console.log(colors)
   return (
     <View>
       {getScreenTypeLayout({
         width: windowWidth,
-        desktopComponent: <DesktopView />,
-        tabletComponent: <DesktopView />,
-        mobileComponent: <MobileView />,
+        desktopComponent: (
+          <DesktopView
+            codeString={codeString}
+            scale={scale}
+            animate={animate}
+            isScaled={isScaled}
+            activePlayground={activePlayground}
+            setActivePlayground={setActivePlayground}
+          />
+        ),
+        tabletComponent: (
+          <DesktopView
+            codeString={codeString}
+            scale={scale}
+            animate={animate}
+            isScaled={isScaled}
+            activePlayground={activePlayground}
+            setActivePlayground={setActivePlayground}
+          />
+        ),
+        mobileComponent: (
+          <MobileView
+            codeString={codeString}
+            scale={scale}
+            animate={animate}
+            isScaled={isScaled}
+            activePlayground={activePlayground}
+            setActivePlayground={setActivePlayground}
+          />
+        ),
       })}
     </View>
   )

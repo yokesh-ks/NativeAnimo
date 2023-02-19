@@ -37,7 +37,7 @@ const App = () => {
         }}
         linking={{ enabled: true }}
       >
-        <View style={{ height: height }}>
+        <View style={{ minHeight: height }}>
           <AppNavigator />
         </View>
       </NavigationContainer>

@@ -1,16 +1,18 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { useNavigation } from '@react-navigation/native'
+import { Layout } from '@native-animo/container'
+import { HomeCard } from '../../../components/card'
 
-const DesktopView = () => {
-  const navigation = useNavigation()
+const DesktopView = (props) => {
+  const { data } = props
+
   return (
-    <View>
-      <Text>DesktopView</Text>
-
-      <TouchableOpacity onPress={() => navigation.navigate('animated-scale')}>
-        <Text>Scale Animation </Text>
-      </TouchableOpacity>
+    <View style={{ marginTop: 24 }}>
+      <Layout>
+        {data?.map((item) => (
+          <HomeCard item={item} />
+        ))}
+      </Layout>
     </View>
   )
 }
