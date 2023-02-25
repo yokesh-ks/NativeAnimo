@@ -15,11 +15,11 @@ const boxWidth = 100
 
 const DesktopView = (props) => {
   const {
-    codeString,
-    scale,
-    animate,
-    isScaled,
     activePlayground,
+    animate,
+    codeString,
+    isScaled,
+    scale,
     setActivePlayground,
   } = props
   const { colors } = useTheme()

@@ -1,15 +1,37 @@
+import { useWindowDimensions } from 'react-native'
+import React from 'react'
+
 export function getScreenTypeLayout({
   width,
   desktopComponent,
   tabletComponent,
   mobileComponent,
 }) {
-  const isDesktop = width > 850
-  const isTablet = width > 600 && width <= 850
+  if (width > 850) {
+    return desktopComponent
+  } else if (width > 600) {
+    return tabletComponent
+  } else {
+    return mobileComponent
+  }
+}
 
-  return isDesktop
-    ? desktopComponent
-    : isTablet
-    ? tabletComponent
-    : mobileComponent
+export const withLayoutView = (
+  DesktopComponent,
+  TabletComponent,
+  MobileComponent,
+) => {
+  const LayoutView = (props) => {
+    const { width } = useWindowDimensions()
+
+    if (width > 850) {
+      return <DesktopComponent {...props} />
+    } else if (width > 600) {
+      return <TabletComponent {...props} />
+    } else {
+      return <MobileComponent {...props} />
+    }
+  }
+
+  return LayoutView
 }

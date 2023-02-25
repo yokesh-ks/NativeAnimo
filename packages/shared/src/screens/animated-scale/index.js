@@ -1,53 +1,26 @@
-import { View, useWindowDimensions } from 'react-native'
 import React, { useState } from 'react'
-import { getScreenTypeLayout } from '../../utils/screenLayout'
 import DesktopView from './DesktopView'
 import MobileView from './MobileView'
 import { codeString } from './codeString'
 import { useScaleAnimation } from './useScaleAnimation'
+import { withLayoutView } from '../../utils/screenLayout'
 
 const AnimatedScale = () => {
-  const { width: windowWidth } = useWindowDimensions()
   const [scale, animate, isScaled] = useScaleAnimation()
   const [activePlayground, setActivePlayground] = useState(false)
 
-  return (
-    <View>
-      {getScreenTypeLayout({
-        width: windowWidth,
-        desktopComponent: (
-          <DesktopView
-            codeString={codeString}
-            scale={scale}
-            animate={animate}
-            isScaled={isScaled}
-            activePlayground={activePlayground}
-            setActivePlayground={setActivePlayground}
-          />
-        ),
-        tabletComponent: (
-          <DesktopView
-            codeString={codeString}
-            scale={scale}
-            animate={animate}
-            isScaled={isScaled}
-            activePlayground={activePlayground}
-            setActivePlayground={setActivePlayground}
-          />
-        ),
-        mobileComponent: (
-          <MobileView
-            codeString={codeString}
-            scale={scale}
-            animate={animate}
-            isScaled={isScaled}
-            activePlayground={activePlayground}
-            setActivePlayground={setActivePlayground}
-          />
-        ),
-      })}
-    </View>
-  )
+  const viewProps = {
+    activePlayground,
+    animate,
+    codeString,
+    isScaled,
+    scale,
+    setActivePlayground,
+  }
+
+  const LayoutView = withLayoutView(DesktopView, DesktopView, MobileView)
+
+  return <LayoutView {...viewProps} />
 }
 
 export default AnimatedScale
