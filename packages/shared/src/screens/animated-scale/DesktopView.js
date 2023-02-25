@@ -1,13 +1,12 @@
 import {
   View,
   StyleSheet,
-  ScrollView,
   Animated,
   TouchableOpacity,
   Modal,
 } from 'react-native'
 import React from 'react'
-import { Layout } from '@native-animo/container'
+import { DesktopContainer } from '@native-animo/container'
 import { useTheme } from '@react-navigation/native'
 import SyntaxHighlighter from 'react-native-syntax-highlighter'
 import { Text } from '@native-animo/components'
@@ -26,88 +25,86 @@ const DesktopView = (props) => {
   const { colors } = useTheme()
 
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={[styles.container, { backgroundColor: colors.background }]}>
-        <Layout>
-          <Text size="h2">Scale Animated</Text>
-          <Text size="para">
-            This code is a React Native component that displays a box that can
-            be scaled in and out using a button. The component uses a custom
-            hook called useScaleAnimation to encapsulate the logic for animating
-            the scale of the box.
-          </Text>
+    <>
+      <DesktopContainer>
+        <Text size="h2">Scale Animated</Text>
+        <Text size="para">
+          This code is a React Native component that displays a box that can be
+          scaled in and out using a button. The component uses a custom hook
+          called useScaleAnimation to encapsulate the logic for animating the
+          scale of the box.
+        </Text>
 
-          <View
+        <View
+          style={[
+            styles.playGround,
+            { backgroundColor: colors.backgroundSurface2 },
+          ]}
+        >
+          <TouchableOpacity
+            style={{
+              position: 'absolute',
+              right: 20,
+              top: 20,
+              backgroundColor: colors.onPrimary,
+              paddingHorizontal: 12,
+              paddingVertical: 6,
+              borderRadius: 8,
+            }}
+            onPress={() => setActivePlayground(true)}
+          >
+            <Text style={{ color: colors.primary, fontSize: 12 }}>
+              Live PlayGround
+            </Text>
+          </TouchableOpacity>
+          <Animated.View
             style={[
-              styles.playGround,
-              { backgroundColor: colors.backgroundSurface2 },
+              styles.box,
+              { transform: [{ scale }] },
+              { backgroundColor: colors.secondaryVariant2 },
             ]}
+          />
+          <TouchableOpacity
+            style={{
+              backgroundColor: colors.primary,
+              paddingHorizontal: 36,
+              paddingVertical: 8,
+              borderRadius: 8,
+            }}
+            onPress={animate}
           >
-            <TouchableOpacity
-              style={{
-                position: 'absolute',
-                right: 20,
-                top: 20,
-                backgroundColor: colors.onPrimary,
-                paddingHorizontal: 12,
-                paddingVertical: 6,
-                borderRadius: 8,
-              }}
-              onPress={() => setActivePlayground(true)}
-            >
-              <Text style={{ color: colors.primary, fontSize: 12 }}>
-                Live PlayGround
-              </Text>
-            </TouchableOpacity>
-            <Animated.View
-              style={[
-                styles.box,
-                { transform: [{ scale }] },
-                { backgroundColor: colors.secondaryVariant2 },
-              ]}
-            />
-            <TouchableOpacity
-              style={{
-                backgroundColor: colors.primary,
-                paddingHorizontal: 36,
-                paddingVertical: 8,
-                borderRadius: 8,
-              }}
-              onPress={animate}
-            >
-              <Text style={{ color: colors.onPrimary, fontSize: 16 }}>
-                {isScaled ? 'Scale out' : 'Scale in'}
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <Text size="para">
-            The useScaleAnimation hook takes three optional arguments: {'\n'}
-            initialValue: The initial value of the scale animation. Defaults to
-            1. {'\n'}
-            finalValue: The final value of the scale animation. Defaults to 1.5.
-            {'\n'}
-            animationConfig: An optional configuration object that can be used
-            to configure the animation. This object is passed directly to the
-            Animated.spring method. By default, useNativeDriver is set to true.
-          </Text>
-          <Text size="para">
-            The useScaleAnimation hook returns an array that contains two
-            elements: a scale ref and an animate function. The scale ref is a
-            useRef reference to the Animated.Value that controls the scale of
-            the box. The animate function is a useCallback memoized function
-            that performs the animation. It calculates the new toValue based on
-            the current value of isScaled, animates the scale value using
-            Animated.spring, and updates the isScaled state value with the
-            inverse of its current value.
-          </Text>
-          <SyntaxHighlighter
-            language="javascript"
-            highlighter={'prism' || 'hljs'}
-          >
-            {codeString}
-          </SyntaxHighlighter>
-        </Layout>
-      </View>
+            <Text style={{ color: colors.onPrimary, fontSize: 16 }}>
+              {isScaled ? 'Scale out' : 'Scale in'}
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <Text size="para">
+          The useScaleAnimation hook takes three optional arguments: {'\n'}
+          initialValue: The initial value of the scale animation. Defaults to 1.{' '}
+          {'\n'}
+          finalValue: The final value of the scale animation. Defaults to 1.5.
+          {'\n'}
+          animationConfig: An optional configuration object that can be used to
+          configure the animation. This object is passed directly to the
+          Animated.spring method. By default, useNativeDriver is set to true.
+        </Text>
+        <Text size="para">
+          The useScaleAnimation hook returns an array that contains two
+          elements: a scale ref and an animate function. The scale ref is a
+          useRef reference to the Animated.Value that controls the scale of the
+          box. The animate function is a useCallback memoized function that
+          performs the animation. It calculates the new toValue based on the
+          current value of isScaled, animates the scale value using
+          Animated.spring, and updates the isScaled state value with the inverse
+          of its current value.
+        </Text>
+        <SyntaxHighlighter
+          language="javascript"
+          highlighter={'prism' || 'hljs'}
+        >
+          {codeString}
+        </SyntaxHighlighter>
+      </DesktopContainer>
       <Modal visible={activePlayground} transparent>
         <View
           style={{
@@ -176,7 +173,7 @@ const DesktopView = (props) => {
           </View>
         </View>
       </Modal>
-    </ScrollView>
+    </>
   )
 }
 
