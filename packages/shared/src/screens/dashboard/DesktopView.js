@@ -9,9 +9,13 @@ const DesktopView = (props) => {
   return (
     <View style={{ marginTop: 24 }}>
       <Layout>
-        {data?.map((item) => (
-          <HomeCard item={item} />
-        ))}
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+          {data?.map((item) => (
+            <View style={{ marginRight: 20, marginBottom: 20 }}>
+              <HomeCard item={item} />
+            </View>
+          ))}
+        </View>
       </Layout>
     </View>
   )

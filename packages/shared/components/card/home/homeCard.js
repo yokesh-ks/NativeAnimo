@@ -13,7 +13,7 @@ const HomeCard = (props) => {
       <Card
         onPress={() => navigation.navigate(item?.navigationKey)}
         bgColor={colors[item?.bgVariant]}
-        style={{ width: 300, borderRadius: 8, padding: 16 }}
+        style={{ width: 240, borderRadius: 8, padding: 16 }}
       >
         <Text
           style={{ color: colors.onNeutral, fontWeight: 600, fontSize: 20 }}
