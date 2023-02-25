@@ -1,9 +1,8 @@
-import { View, Text, useWindowDimensions } from 'react-native'
+import { View, useWindowDimensions } from 'react-native'
 import React, { useState } from 'react'
 import { getScreenTypeLayout } from '../../utils/screenLayout'
 import DesktopView from './DesktopView'
 import MobileView from './MobileView'
-import { useTheme } from '@react-navigation/native'
 import { codeString } from './codeString'
 import { useScaleAnimation } from './useScaleAnimation'
 

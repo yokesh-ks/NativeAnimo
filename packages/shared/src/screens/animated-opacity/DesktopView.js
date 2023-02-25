@@ -1,6 +1,5 @@
 import {
   View,
-  Text,
   ScrollView,
   StyleSheet,
   TouchableOpacity,
@@ -12,29 +11,19 @@ import { useTheme } from '@react-navigation/native'
 import { codeString } from './codeString'
 import SyntaxHighlighter from 'react-native-syntax-highlighter'
 import { hookString } from './hookString'
+import { Text } from '@native-animo/components'
 
 const boxWidth = 100
 
 const DesktopView = (props) => {
-  const { activePlayground, setActivePlayground, opacity, visible, animate } =
-    props
+  const { opacity, visible, animate } = props
   const { colors } = useTheme()
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={[styles.container, { backgroundColor: colors.background }]}>
         <Layout>
-          <Text style={{ color: colors.textPrimary, fontSize: 24 }}>
-            Opacity Animated
-          </Text>
-          <Text
-            style={{
-              color: colors.textPrimary,
-              fontSize: 16,
-              marginTop: 20,
-              lineHeight: 24,
-              textAlign: 'justify',
-            }}
-          >
+          <Text size="h2">Opacity Animated</Text>
+          <Text size="para">
             The code is a React Native component that animates the opacity of a
             box when a button is pressed. It also includes a custom hook to
             handle the animation logic.
@@ -66,15 +55,7 @@ const DesktopView = (props) => {
               </Text>
             </TouchableOpacity>
           </View>
-          <Text
-            style={{
-              color: colors.textPrimary,
-              fontSize: 16,
-              marginTop: 20,
-              lineHeight: 24,
-              textAlign: 'justify',
-            }}
-          >
+          <Text size="para">
             The useAnimateOpacity custom hook is defined to handle the animation
             logic. It takes an initialValue parameter that determines whether
             the box is initially visible or not. The hook creates a ref for the
@@ -87,43 +68,19 @@ const DesktopView = (props) => {
           >
             {hookString}
           </SyntaxHighlighter>
-          <Text
-            style={{
-              color: colors.textPrimary,
-              fontSize: 16,
-              marginTop: 20,
-              lineHeight: 24,
-              textAlign: 'justify',
-            }}
-          >
+          <Text size="para">
             The animateOpacity function is defined inside the useAnimateOpacity
             hook to handle the animation. It uses the Animated.spring method to
             animate the opacity of the box from 1 to 0 (if visible is true) or
             from 0 to 1 (if visible is false). It then toggles the visible state
             variable when the animation completes.
           </Text>
-          <Text
-            style={{
-              color: colors.textPrimary,
-              fontSize: 16,
-              marginTop: 20,
-              lineHeight: 24,
-              textAlign: 'justify',
-            }}
-          >
+          <Text size="para">
             The useAnimateOpacity hook returns an array of [opacity,
             animateOpacity, visible], which includes the opacity ref, the
             animateOpacity function, and the visible state variable.
           </Text>
-          <Text
-            style={{
-              color: colors.textPrimary,
-              fontSize: 16,
-              marginTop: 20,
-              lineHeight: 24,
-              textAlign: 'justify',
-            }}
-          >
+          <Text size="para">
             The OpacityAnimated component calls the useAnimateOpacity hook to
             get the opacity, visible, and animateOpacity values. It uses the
             opacity ref to set the opacity of the box, and the visible state

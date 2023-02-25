@@ -2,7 +2,6 @@ import {
   View,
   StyleSheet,
   ScrollView,
-  Text,
   Animated,
   TouchableOpacity,
   Modal,
@@ -11,6 +10,7 @@ import React from 'react'
 import { Layout } from '@native-animo/container'
 import { useTheme } from '@react-navigation/native'
 import SyntaxHighlighter from 'react-native-syntax-highlighter'
+import { Text } from '@native-animo/components'
 
 const boxWidth = 100
 
@@ -29,18 +29,8 @@ const DesktopView = (props) => {
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={[styles.container, { backgroundColor: colors.background }]}>
         <Layout>
-          <Text style={{ color: colors.textPrimary, fontSize: 24 }}>
-            Scale Animated
-          </Text>
-          <Text
-            style={{
-              color: colors.textPrimary,
-              fontSize: 16,
-              marginTop: 20,
-              lineHeight: 24,
-              textAlign: 'justify',
-            }}
-          >
+          <Text size="h2">Scale Animated</Text>
+          <Text size="para">
             This code is a React Native component that displays a box that can
             be scaled in and out using a button. The component uses a custom
             hook called useScaleAnimation to encapsulate the logic for animating
@@ -90,15 +80,7 @@ const DesktopView = (props) => {
               </Text>
             </TouchableOpacity>
           </View>
-          <Text
-            style={{
-              color: colors.textPrimary,
-              fontSize: 16,
-              marginTop: 20,
-              lineHeight: 24,
-              textAlign: 'justify',
-            }}
-          >
+          <Text size="para">
             The useScaleAnimation hook takes three optional arguments: {'\n'}
             initialValue: The initial value of the scale animation. Defaults to
             1. {'\n'}
@@ -108,15 +90,7 @@ const DesktopView = (props) => {
             to configure the animation. This object is passed directly to the
             Animated.spring method. By default, useNativeDriver is set to true.
           </Text>
-          <Text
-            style={{
-              color: colors.textPrimary,
-              fontSize: 16,
-              marginTop: 20,
-              lineHeight: 24,
-              textAlign: 'justify',
-            }}
-          >
+          <Text size="para">
             The useScaleAnimation hook returns an array that contains two
             elements: a scale ref and an animate function. The scale ref is a
             useRef reference to the Animated.Value that controls the scale of
