@@ -5,7 +5,7 @@ import { useTheme } from '@react-navigation/native'
 import { codeString } from './codeString'
 import SyntaxHighlighter from 'react-native-syntax-highlighter'
 import { hookString } from './hookString'
-import { Text } from '@native-animo/components'
+import { Text, PlayGround } from '@native-animo/components'
 
 const boxWidth = 100
 
@@ -20,12 +20,7 @@ const DesktopView = (props) => {
         when a button is pressed. It also includes a custom hook to handle the
         animation logic.
       </Text>
-      <View
-        style={[
-          styles.playGround,
-          { backgroundColor: colors.backgroundSurface2 },
-        ]}
-      >
+      <PlayGround>
         <Animated.View
           style={[
             styles.box,
@@ -46,7 +41,7 @@ const DesktopView = (props) => {
             {visible ? 'Opacity out' : 'Opacity in'}
           </Text>
         </TouchableOpacity>
-      </View>
+      </PlayGround>
       <Text size="para">
         The useAnimateOpacity custom hook is defined to handle the animation
         logic. It takes an initialValue parameter that determines whether the
@@ -85,14 +80,6 @@ const DesktopView = (props) => {
 }
 
 const styles = StyleSheet.create({
-  playGround: {
-    width: '100%',
-    height: 400,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 68,
-    marginVertical: 20,
-  },
   box: {
     height: boxWidth,
     width: boxWidth,

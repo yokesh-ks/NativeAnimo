@@ -9,7 +9,7 @@ import React from 'react'
 import { DesktopContainer } from '@native-animo/container'
 import { useTheme } from '@react-navigation/native'
 import SyntaxHighlighter from 'react-native-syntax-highlighter'
-import { Text } from '@native-animo/components'
+import { Text, PlayGround } from '@native-animo/components'
 
 const boxWidth = 100
 
@@ -35,28 +35,7 @@ const DesktopView = (props) => {
           scale of the box.
         </Text>
 
-        <View
-          style={[
-            styles.playGround,
-            { backgroundColor: colors.backgroundSurface2 },
-          ]}
-        >
-          <TouchableOpacity
-            style={{
-              position: 'absolute',
-              right: 20,
-              top: 20,
-              backgroundColor: colors.onPrimary,
-              paddingHorizontal: 12,
-              paddingVertical: 6,
-              borderRadius: 8,
-            }}
-            onPress={() => setActivePlayground(true)}
-          >
-            <Text style={{ color: colors.primary, fontSize: 12 }}>
-              Live PlayGround
-            </Text>
-          </TouchableOpacity>
+        <PlayGround handleLivePlayGround={() => setActivePlayground(true)}>
           <Animated.View
             style={[
               styles.box,
@@ -77,7 +56,7 @@ const DesktopView = (props) => {
               {isScaled ? 'Scale out' : 'Scale in'}
             </Text>
           </TouchableOpacity>
-        </View>
+        </PlayGround>
         <Text size="para">
           The useScaleAnimation hook takes three optional arguments: {'\n'}
           initialValue: The initial value of the scale animation. Defaults to 1.{' '}
@@ -178,24 +157,12 @@ const DesktopView = (props) => {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingVertical: 40,
-  },
   iframe: {
     marginTop: -62,
     borderWidth: 0,
     height: '100%',
     width: '100%',
     borderRadius: 16,
-  },
-  playGround: {
-    width: '100%',
-    height: 400,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 68,
-    marginVertical: 20,
   },
   box: {
     height: boxWidth,
